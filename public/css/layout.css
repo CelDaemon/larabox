@@ -1,0 +1,13 @@
+:root {
+    color-scheme: dark;
+}
+* {
+    margin: 0;
+}
+html {
+    height: 100%;
+}
+body {
+    min-height: 100dvh;
+    background-color: black;
+}

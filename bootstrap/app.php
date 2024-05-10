@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\CSPMiddleware;
+use App\Http\Middleware\HSTSMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,7 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->removeFromGroup("web", ValidateCsrfToken::class);
-        //
+        $middleware->alias(["csp" => CSPMiddleware::class]);
+        $middleware->appendToGroup("web", "csp");
+        $middleware->append(HSTSMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
