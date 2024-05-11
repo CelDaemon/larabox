@@ -1,5 +1,5 @@
-<x-layout title="Sign Up">
-    <link rel="stylesheet" href="css/signup.css">
+<x-layout title="Register">
+    <link rel="stylesheet" href="css/register.css">
     <div>
         <main>
             <header>
