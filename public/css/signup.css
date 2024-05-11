@@ -11,15 +11,17 @@ div:has(main) {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     main {
         display: flex;
         flex-direction: column;
-        width: 480px;
+        width: min(100%, 480px);
         border: var(--border-color) solid 1px;
         border-radius: 15px;
         padding: 48px 24px;
         gap: 24px;
         box-shadow: 0 4px 15px 20px var(--accent-color);
+        position: relative;
         header {
             display: flex;
             flex-direction: column;
@@ -36,12 +38,12 @@ div:has(main) {
         }
         hr {
             width: 100%;
-            color: var(--border-color);
+            border-color: var(--border-color);
         }
         form {
             display: flex;
             flex-direction: column;
-            padding: 0 48px;
+            padding: 0 24px;
             gap: 12px;
             input:not([type="submit"]) {
                 padding: 0 24px;
@@ -52,11 +54,20 @@ div:has(main) {
                 background-color: var(--accent-color);
             }
             * {
-                height: 60px;
+                height: 50px;
                 font-size: 20px;
                 border-radius: 15px;
                 border: var(--border-color) solid 1px;
             }
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -72px;
+            right: -72px;
+            height: 100px;
+            background: radial-gradient(var(--accent-color), var(--background-color) 90%);
         }
     }
 }
