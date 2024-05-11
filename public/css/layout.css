@@ -1,8 +1,7 @@
+@import "default.css";
 :root {
     color-scheme: dark;
-}
-* {
-    margin: 0;
+    font-family: 'sans-serif';
 }
 html {
     height: 100%;
