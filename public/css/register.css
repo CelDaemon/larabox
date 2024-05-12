@@ -1,73 +1,24 @@
-@import "default.css";
+@import "/css/default.css";
 :host {
     height: 100%;
-    --border-color: rgba(255, 255, 255, 20%);
-    --background-color: black;
-    --accent-color: #110521;
-    --subtitle-color: rgba(255, 255, 255, 70%)
 }
-div:has(main) {
-    height: 100%;
+form {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    main {
-        display: flex;
-        flex-direction: column;
-        width: min(100%, 480px);
-        border: var(--border-color) solid 1px;
+    flex-direction: column;
+    padding: 0 24px;
+    gap: 12px;
+    input:not([type="submit"]) {
+        padding: 0 24px;
+        background-color: black;
+    }
+    input[type="submit"] {
+        margin-top: 24px;
+        background-color: var(--accent-color);
+    }
+    * {
+        height: 50px;
+        font-size: 20px;
         border-radius: 15px;
-        padding: 48px 24px;
-        gap: 24px;
-        box-shadow: 0 4px 15px 20px var(--accent-color);
-        position: relative;
-        header {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            * {
-                text-align: center;
-                line-height: 1em;
-            }
-            #subtitle {
-                font-weight: normal;
-                font-size: 20px;
-                color: var(--subtitle-color);
-            }
-        }
-        hr {
-            width: 100%;
-            border-color: var(--border-color);
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            padding: 0 24px;
-            gap: 12px;
-            input:not([type="submit"]) {
-                padding: 0 24px;
-                background-color: black;
-            }
-            input[type="submit"] {
-                margin-top: 24px;
-                background-color: var(--accent-color);
-            }
-            * {
-                height: 50px;
-                font-size: 20px;
-                border-radius: 15px;
-                border: var(--border-color) solid 1px;
-            }
-        }
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            left: -72px;
-            right: -72px;
-            height: 100px;
-            background: radial-gradient(var(--accent-color), var(--background-color) 90%);
-        }
+        border: var(--border-color) solid 1px;
     }
 }

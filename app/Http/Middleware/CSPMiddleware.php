@@ -16,7 +16,7 @@ class CSPMiddleware
         $response = $next($request);
         if ($response->isClientError() || $response->isServerError()) return $response;
         $response->headers->set("Content-Security-Policy",
-            $value ?? "script-src 'strict-dynamic' 'nonce-$nonce';style-src 'self';object-src 'none';base-uri 'none';frame-ancestors 'none'",
+            $value ?? "script-src 'strict-dynamic' 'nonce-$nonce';style-src 'self' 'nonce-$nonce';object-src 'none';base-uri 'none';frame-ancestors 'none'",
             false);
         return $response;
     }
