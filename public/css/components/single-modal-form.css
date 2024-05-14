@@ -1,0 +1,27 @@
+form.single-modal-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+    gap: 12px;
+    input {
+        transition: outline-color .2s ease-out;
+        outline: rgba(255, 255, 255, 0%) 1px solid;
+        &:focus-visible {
+            outline: rgba(255, 255, 255, 60%) 1px solid;
+        }
+        &:not([type="submit"]) {
+            padding: 0 24px;
+            background-color: black;
+        }
+        &[type="submit"] {
+            margin-top: 24px;
+            background-color: var(--accent-color);
+        }
+    }
+    * {
+        height: 50px;
+        font-size: 20px;
+        border-radius: 15px;
+        border: var(--border-color) solid 1px;
+    }
+}

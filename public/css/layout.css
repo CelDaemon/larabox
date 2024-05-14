@@ -2,6 +2,10 @@
 :root {
     color-scheme: dark;
     font-family: 'sans-serif';
+    --border-color: rgba(255, 255, 255, 20%);
+    --background-color: black;
+    --accent-color: #110521;
+    --subtitle-color: rgba(255, 255, 255, 70%);
 }
 html {
     height: 100%;

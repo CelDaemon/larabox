@@ -12,7 +12,7 @@ class CSPMiddleware
 {
     use ExcludesPaths;
     protected array $except = ["/up"];
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next): mixed
     {
         $nonce = Str::random();
         $request->attributes->set("nonce", $nonce);
