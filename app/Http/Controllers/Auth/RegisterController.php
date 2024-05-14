@@ -17,7 +17,7 @@ class RegisterController extends Controller
     }
     public function store(RegisterRequest $request): RedirectResponse
     {
-        Auth::login(User::create($request->validated()));
+        Auth::login(User::create($request->validated()), true);
         return redirect(route("welcome", absolute: false));
     }
 }
