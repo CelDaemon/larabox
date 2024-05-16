@@ -5,7 +5,7 @@
     <meta id="boo" charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@isset($title){{$title}} - @endisset{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="/css/layout.css">
 </head>
 <body>
 <template shadowrootmode="open">

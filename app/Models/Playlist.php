@@ -7,10 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 
+/**
+ * @property string $title
+ * @property boolean $public
+ * @property string $user_id
+ * @property Collection<Song> $songs
+ */
 class Playlist extends Model
 {
     use HasFactory, HasUlids;
+
+    protected $fillable = [
+        "title"
+    ];
 
     public function user(): BelongsTo
     {

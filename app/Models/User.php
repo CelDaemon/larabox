@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
 /**
  * @method static User create(array $values)
+ * @method static User find(string $id)
+ * @property Collection<Playlist> $playlists
+ * @property string $id
  */
 class User extends Authenticatable
 {
