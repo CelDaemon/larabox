@@ -7,8 +7,10 @@
         @endforeach
     </ol>
 
-    <form method="POST" action="{{route("playlist.destroy", [$playlist])}}">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete">
-    </form>
+    @can('delete', $playlist)
+        <form method="POST" action="{{route("playlist.destroy", [$playlist])}}">
+            @method("DELETE")
+            <input type="submit" value="Delete">
+        </form>
+    @endcan
 </x-layout>
