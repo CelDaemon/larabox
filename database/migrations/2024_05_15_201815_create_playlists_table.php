@@ -15,7 +15,8 @@ return new class extends Migration
         Schema::create('playlists', function (Blueprint $table) {
             $table->ulid("id")->primary();
             $table->string("title");
-            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->boolean("public")->default(false);
             $table->timestamps();
         });
     }
