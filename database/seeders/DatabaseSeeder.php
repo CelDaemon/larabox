@@ -20,7 +20,5 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-
-        $this->callOnce([PlaylistSeeder::class], parameters: ["user" => $user]);
     }
 }
