@@ -37,6 +37,17 @@ class PlaylistController extends Controller
         Gate::authorize("view", $playlist);
         return view("playlist.show", ["playlist" => $playlist, "songs" => $playlist->songs]);
     }
+    public function update(Request $request, Playlist $playlist): RedirectResponse
+    {
+        Gate::authorize("update", $playlist);
+        $validated = $request->validate([
+            "title" => ["string", "max:255"]
+        ]);
+        $playlist->public = $request->boolean("public") ?? false;
+        $playlist->fill($validated);
+        $playlist->save();
+        return redirect(route("playlist.show", [$playlist]));
+    }
     public function destroy(Playlist $playlist): RedirectResponse
     {
         Gate::authorize("delete", $playlist);
