@@ -22,6 +22,17 @@ class Playlist extends Model
     protected $fillable = [
         "title"
     ];
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'public' => 'boolean',
+        ];
+    }
 
     public function user(): BelongsTo
     {
