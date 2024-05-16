@@ -11,6 +11,10 @@ class Song extends Model
 {
     use HasFactory, HasUlids;
 
+    protected $fillable = [
+        "title"
+    ];
+
     public function playlists(): BelongsToMany
     {
         return $this->belongsToMany(Playlist::class);
