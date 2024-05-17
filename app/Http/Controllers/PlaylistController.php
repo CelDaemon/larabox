@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Playlist;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
@@ -40,9 +42,16 @@ class PlaylistController extends Controller
         $request->user()->playlists()->create($validated);
         return redirect(route("playlist.index"));
     }
+
+    /**
+     * @throws AuthorizationException
+     */
     public function show(Playlist $playlist): View
     {
-        Gate::authorize("view", $playlist);
+        if(($response = Gate::inspect("view", $playlist))->denied()) {
+            Auth::authenticate();
+            $response->authorize();
+        }
         return view("playlist.show", ["playlist" => $playlist, "songs" => $playlist->songs]);
     }
     public function update(Request $request, Playlist $playlist): RedirectResponse
