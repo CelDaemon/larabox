@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Artist;
 use App\Models\Playlist;
 use App\Models\Song;
 use App\Models\User;
@@ -22,6 +23,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-        Playlist::factory(2)->for($user, "owner")->has(Song::factory(10))->create();
+        Playlist::factory(2)->for($user, "owner")->has(Song::factory(10)->has(Artist::factory(2)))->create();
     }
 }
