@@ -13,10 +13,14 @@
     @can("update", $playlist)
         <form method="POST" action="{{route("playlist.update", [$playlist])}}">
             @method("PATCH")
-            <label for="title">Title: </label><input id="title" name="title" type="text"
-                                                     value="{{old("title") ?? $playlist->title}}">
-            <label for="public">Public: </label><input id="public" name="public"
-                                                       type="checkbox" @checked($playlist->is_public)>
+            <div>
+                <label for="title">Title: </label><input id="title" name="title" type="text"
+                                                         value="{{old("title") ?? $playlist->title}}">
+            </div>
+            <div>
+                <label for="public">Public: </label><input id="public" name="public"
+                                                           type="checkbox" @checked($playlist->is_public)>
+            </div>
             <input type="submit" value="Update">
         </form>
     @endcan
