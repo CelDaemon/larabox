@@ -6,11 +6,19 @@ use App\Models\Playlist;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
 class PlaylistController extends Controller
 {
+    public function middleware(): array
+    {
+        return [
+            new Middleware("auth", except: ["show"])
+        ];
+    }
+
     public function index(Request $request): View
     {
         Gate::authorize("viewAny", Playlist::class);

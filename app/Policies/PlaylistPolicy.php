@@ -18,9 +18,9 @@ class PlaylistPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Playlist $playlist): bool
+    public function view(?User $user, Playlist $playlist): bool
     {
-        return $playlist->is_public || $user->id === $playlist->owned_by;
+        return $playlist->is_public || ($user !== null && $user->id === $playlist->owned_by);
     }
 
     /**
