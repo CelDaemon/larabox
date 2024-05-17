@@ -20,7 +20,7 @@ class PlaylistPolicy
      */
     public function view(User $user, Playlist $playlist): bool
     {
-        return $playlist->public || $user->id === $playlist->user_id;
+        return $playlist->is_public || $user->id === $playlist->owned_by;
     }
 
     /**
@@ -36,7 +36,7 @@ class PlaylistPolicy
      */
     public function update(User $user, Playlist $playlist): bool
     {
-        return $user->id === $playlist->user_id;
+        return $user->id === $playlist->owned_by;
     }
 
     /**
@@ -44,7 +44,7 @@ class PlaylistPolicy
      */
     public function delete(User $user, Playlist $playlist): bool
     {
-        return $user->id === $playlist->user_id;
+        return $user->id === $playlist->owned_by;
     }
 
     /**
@@ -52,7 +52,7 @@ class PlaylistPolicy
      */
     public function restore(User $user, Playlist $playlist): bool
     {
-        return $user->id === $playlist->user_id;
+        return $user->id === $playlist->owned_by;
     }
 
     /**
@@ -60,6 +60,6 @@ class PlaylistPolicy
      */
     public function forceDelete(User $user, Playlist $playlist): bool
     {
-        return $user->id === $playlist->user_id;
+        return $user->id === $playlist->owned_by;
     }
 }

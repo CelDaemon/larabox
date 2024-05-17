@@ -11,8 +11,8 @@ use Illuminate\Support\Collection;
 
 /**
  * @property string $title
- * @property boolean $public
- * @property string $user_id
+ * @property boolean $is_public
+ * @property string $owned_by
  * @property Collection<Song> $songs
  */
 class Playlist extends Model
@@ -34,9 +34,9 @@ class Playlist extends Model
         ];
     }
 
-    public function user(): BelongsTo
+    public function owner(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,"owned_by");
     }
 
     public function songs(): BelongsToMany

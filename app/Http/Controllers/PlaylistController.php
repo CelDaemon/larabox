@@ -43,7 +43,7 @@ class PlaylistController extends Controller
         $validated = $request->validate([
             "title" => ["string", "max:255"]
         ]);
-        $playlist->public = $request->boolean("public") ?? false;
+        $playlist->is_public = $request->boolean("public") ?? false;
         $playlist->fill($validated);
         $playlist->save();
         return redirect(route("playlist.show", [$playlist]));

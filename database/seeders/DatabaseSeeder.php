@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-        Playlist::factory(2)->for($user)->has(Song::factory(10))->create();
+        Playlist::factory(2)->for($user, "owner")->has(Song::factory(10))->create();
     }
 }
