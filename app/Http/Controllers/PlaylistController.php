@@ -7,14 +7,15 @@ use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
-class PlaylistController extends Controller
+class PlaylistController extends Controller implements HasMiddleware
 {
-    public function middleware(): array
+    public static function middleware(): array
     {
         return [
             new Middleware("auth", except: ["show"])
