@@ -1,13 +1,22 @@
-@php use App\Models\Playlist; @endphp
+@use("Illuminate\Support\Collection")
+@use("App\Models\Playlist")
+@use("App\Models\Song")
+
 @php
     /** @var Playlist $playlist */
+    /** @var Collection<Song> $songs */
 @endphp
 <x-layout name="Edit Playlist">
     <h1>Edit Playlist - {{$playlist->title}}</h1>
     <h2>Songs</h2>
     <ol>
         @foreach($songs as $song)
-            <li>{{$song->title}}</li>
+            <li>{{$song->title}} - {{$song->duration_string}}
+                @if($song->artists->isNotEmpty())
+                     -
+                    @foreach($song->artists as $artist){{$loop->first ? '' : ', '}}<span>{{$artist->name}}</span>@endforeach
+                @endisset
+            </li>
         @endforeach
     </ol>
     @can("update", $playlist)
