@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@isset($title){{$title}} - @endisset{{ config('app.name') }}</title>
     <link rel="stylesheet" href="/css/layout.css">
+    <link media="(prefers-color-scheme: light)" rel="icon" href="/favicon-light.svg">
+    <link media="(prefers-color-scheme: dark)" rel="icon" href="/favicon-dark.svg">
 </head>
 <body>
 <template shadowrootmode="open">

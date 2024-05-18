@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 12.7 12.7"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <path
+     d="M 7.4806168,10.592149 V 6.6396621 L 8.5652131,6.1021631 V 9.2835093 L 10.648213,8.0991618 v 0.6428868 z"
+     id="text486"
+     style="font-size:3.52777px;font-family:Sans;-inkscape-font-specification:'Sans, @wght=700';font-variation-settings:'wght' 700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:0.741674;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+     aria-label="L" />
+  <path
+     style="font-variation-settings:'wght' 700;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     id="path478"
+     d="m 2.1166669,3.6239729 c 0.01773,0 -1.8419524,-1.0736882 -1.83308729,-1.0583334 0.008865,0.015355 0.008865,-2.13202157 -6e-8,-2.11666675 -0.008865,0.0153548 1.85081745,-1.05833345 1.83308715,-1.05833344 -0.01773,0 1.8419524,1.07368816 1.8330873,1.05833334 -0.00887,-0.0153548 -0.00887,2.13202165 0,2.11666675 0.00887,-0.015355 -1.8508174,1.0583335 -1.8330871,1.0583335 z"
+     transform="matrix(2.8031821,0,0,2.8031821,0.41659757,2.1247465)" />
+  <path
+     style="font-variation-settings:'wght' 700;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.741674;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     d="m 6.3500001,12.283403 -3e-7,-5.9334033 5.1384772,-2.9667012"
+     id="path479" />
+  <path
+     style="font-variation-settings:'wght' 700;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.741674;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     d="M 6.3499998,6.3499997 1.2115226,3.3832988"
+     id="path480" />
+</svg>
