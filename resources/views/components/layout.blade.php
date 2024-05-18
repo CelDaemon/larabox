@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/layout.css">
     <link media="(prefers-color-scheme: light)" rel="icon" href="/favicon-light.svg">
     <link media="(prefers-color-scheme: dark)" rel="icon" href="/favicon-dark.svg">
+    <meta property="og:title" content="@isset($title){{$title}} - @endisset{{config('app.name')}}">
+    <meta property="og:image" content="{{asset("/social-icon.png")}}">
 </head>
 <body>
 <template shadowrootmode="open">
