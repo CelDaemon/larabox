@@ -26,9 +26,12 @@
                 <label for="title">Title: </label><input id="title" name="title" type="text"
                                                          value="{{old("title") ?? $playlist->title}}">
             </div>
+            @error("title")
+            <span class="error">{{$message}}</span>
+            @enderror
             <div>
-                <label for="public">Public: </label><input id="public" name="public"
-                                                           type="checkbox" @checked($playlist->is_public)>
+                <label for="is_public">Public: </label><input id="is_public" name="is_public"
+                                                           type="checkbox" @checked(old("is_public") ?? $playlist->is_public)>
             </div>
             <input type="submit" value="Update">
         </form>

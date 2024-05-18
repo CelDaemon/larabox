@@ -6,6 +6,10 @@ form.single-modal-form {
     input {
         transition: outline-color .2s ease-out;
         outline: rgba(255, 255, 255, 0%) 1px solid;
+        height: 50px;
+        font-size: 20px;
+        border-radius: 15px;
+        border: var(--border-color) solid 1px;
         &:focus-visible {
             outline: rgba(255, 255, 255, 60%) 1px solid;
         }
@@ -18,10 +22,11 @@ form.single-modal-form {
             background-color: var(--accent-color);
         }
     }
-    * {
-        height: 50px;
-        font-size: 20px;
-        border-radius: 15px;
-        border: var(--border-color) solid 1px;
+    input.invalid {
+        border-color: red;
+    }
+    .error {
+        font-size: small;
+        color: red;
     }
 }

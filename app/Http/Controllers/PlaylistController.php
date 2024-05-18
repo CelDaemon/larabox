@@ -61,7 +61,7 @@ class PlaylistController extends Controller implements HasMiddleware
         $validated = $request->validate([
             "title" => ["string", "max:255"]
         ]);
-        $playlist->is_public = $request->boolean("public") ?? false;
+        $playlist->is_public = $request->boolean("is_public") ?? false;
         $playlist->fill($validated);
         $playlist->save();
         return redirect(route("playlist.show", [$playlist], false));
