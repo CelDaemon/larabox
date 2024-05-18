@@ -1,5 +1,5 @@
 <x-layout title="Login">
-    <link rel="stylesheet" href="/css/user/login.css">
+    <link rel="stylesheet" href="{{asset("/css/user/login.css")}}">
     <x-single-modal title="Login" subtitle="Welcome to Larabox!">
         <form method="POST" class="single-modal-form">
             <input type="email" name="email" placeholder="Email" required value="{{old("email")}}">

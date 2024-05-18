@@ -20,7 +20,7 @@
         @endforeach
     </ol>
     @can("update", $playlist)
-        <form method="POST" action="{{route("playlist.update", [$playlist])}}">
+        <form method="POST" action="{{route("playlist.update", [$playlist], false)}}">
             @method("PATCH")
             <div>
                 <label for="title">Title: </label><input id="title" name="title" type="text"
@@ -34,7 +34,7 @@
         </form>
     @endcan
     @can('delete', $playlist)
-        <form method="POST" action="{{route("playlist.destroy", [$playlist])}}">
+        <form method="POST" action="{{route("playlist.destroy", [$playlist], false)}}">
             @method("DELETE")
             <input type="submit" value="Delete">
         </form>

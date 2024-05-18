@@ -41,7 +41,7 @@ class PlaylistController extends Controller implements HasMiddleware
             "title" => ["required", "string", "max:255"]
         ]);
         $request->user()->playlists()->create($validated);
-        return redirect(route("playlist.index"));
+        return redirect(route("playlist.index", absolute: false));
     }
 
     /**
@@ -64,12 +64,12 @@ class PlaylistController extends Controller implements HasMiddleware
         $playlist->is_public = $request->boolean("public") ?? false;
         $playlist->fill($validated);
         $playlist->save();
-        return redirect(route("playlist.show", [$playlist]));
+        return redirect(route("playlist.show", [$playlist], false));
     }
     public function destroy(Playlist $playlist): RedirectResponse
     {
         Gate::authorize("delete", $playlist);
         $playlist->delete();
-        return redirect(route("playlist.index"));
+        return redirect(route("playlist.index", absolute: false));
     }
 }
