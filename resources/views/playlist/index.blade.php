@@ -1,4 +1,4 @@
-<x-layout name="Playlists">
+<x-layout title="Playlists">
     <style @nonce>
         a {
             -moz-appearance: button;
