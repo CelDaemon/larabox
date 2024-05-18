@@ -6,7 +6,7 @@
     /** @var Playlist $playlist */
     /** @var Collection<Song> $songs */
 @endphp
-<x-layout title="Edit Playlist">
+<x-layout title="{{$playlist->title}}">
     <h1>Edit Playlist - {{$playlist->title}}</h1>
     <h2>Songs</h2>
     <ol>
