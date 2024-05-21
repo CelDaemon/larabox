@@ -20,15 +20,7 @@ jobs:
           DEPLOY_HOSTKEY: ${{vars.DEPLOY_HOSTKEY}}
       - name: Deploy to target
         run: >
-          ssh -i larabox_deploy "${{vars.DEPLOY_TARGET}}" "cd /srv/larabox.voidgroup.net &&
-          php artisan down &&
-          git fetch origin '${{github.sha}}' --depth 1 &&
-          git reset --hard '${{github.sha}}' &&
-          git clean -xf -e storage -e database -e .env &&
-          composer install --no-interaction --prefer-dist --optimize-autoloader &&
-          php artisan optimize &&
-          php artisan migrate --force &&
-          php artisan up"
+          ssh -i larabox_deploy "${{vars.DEPLOY_TARGET}}" "${{github.sha}}"
 concurrency: production
 name: Deploy to production
 run-name: Deploy to production (${{ github.event.head_commit.message }})
