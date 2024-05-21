@@ -42,4 +42,10 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+    public function withBeta(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'has_beta' => true
+        ]);
+    }
 }

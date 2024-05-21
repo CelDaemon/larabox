@@ -15,6 +15,7 @@ use Illuminate\Support\Collection;
  * @method static User find(string $id)
  * @property Collection<Playlist> $playlists
  * @property string $id
+ * @property boolean $has_beta
  */
 class User extends Authenticatable
 {
@@ -51,6 +52,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'has_beta' => 'boolean'
         ];
     }
 

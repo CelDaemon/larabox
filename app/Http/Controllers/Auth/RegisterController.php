@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -17,7 +18,7 @@ class RegisterController extends Controller
     }
     public function store(RegisterRequest $request): RedirectResponse
     {
-        Auth::login(User::create($request->validated()), true);
+        Auth::login(User::create(array_merge($request->validated(), ["has_beta" => App::isLocal()])), true);
         return redirect(route("welcome", absolute: false));
     }
 }
