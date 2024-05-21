@@ -30,7 +30,7 @@
             <span class="error">{{$message}}</span>
             @enderror
             <div>
-                <label for="is_public">Public: </label><input id="is_public" name="is_public"
+                <label for="is_public">Public: </label><input id="is_public" name="is_public" value="1"
                                                            type="checkbox" @checked(old("is_public") ?? $playlist->is_public)>
             </div>
             <input type="submit" value="Update">
