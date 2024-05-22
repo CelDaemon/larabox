@@ -13,5 +13,5 @@ Route::get('/login', [AuthenticatedSessionController::class, "create"])->name("l
 Route::post("/login", [AuthenticatedSessionController::class, "store"]);
 Route::post("/logout", [AuthenticatedSessionController::class, "destroy"])->name("logout");
 Route::resource("playlist", PlaylistController::class);
-Route::get("/song", [SongController::class, "index"])->middleware("auth");
+Route::get("/song", [SongController::class, "index"])->middleware(["auth", "can:beta"]);
 include "debug.php";
