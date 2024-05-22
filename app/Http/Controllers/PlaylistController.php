@@ -18,25 +18,26 @@ class PlaylistController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware("auth", except: ["show"])
+            new Middleware("auth", except: ["show"]),
+            new Middleware("can:viewAny," . Playlist::class, only: ["index"]),
+            new Middleware("can:create," . Playlist::class, only: ["create", "store"]),
+            new Middleware("can:update,playlist", only: ["update"]),
+            new Middleware("can:delete,playlist", only: ["destroy"])
         ];
     }
 
     public function index(Request $request): View
     {
-        Gate::authorize("viewAny", Playlist::class);
         /** @var User $user */
         $user = $request->user();
         return view("playlist.index", ["playlists" => $user->playlists]);
     }
     public function create(): View
     {
-        Gate::authorize("create", Playlist::class);
         return view("playlist.create");
     }
     public function store(Request $request): RedirectResponse
     {
-        Gate::authorize("create", Playlist::class);
         $validated = $request->validate([
             "title" => ["required", "string", "max:255"]
         ]);
@@ -57,7 +58,6 @@ class PlaylistController extends Controller implements HasMiddleware
     }
     public function update(Request $request, Playlist $playlist): RedirectResponse
     {
-        Gate::authorize("update", $playlist);
         $validated = $request->validate([
             "title" => ["string", "max:255"],
             "is_public" => ["in:1"]
@@ -69,7 +69,6 @@ class PlaylistController extends Controller implements HasMiddleware
     }
     public function destroy(Playlist $playlist): RedirectResponse
     {
-        Gate::authorize("delete", $playlist);
         $playlist->delete();
         return redirect(route("playlist.index", absolute: false));
     }
