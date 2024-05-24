@@ -5,13 +5,21 @@
 @endphp
 <x-layout title="List Songs">
     <style @nonce>
-        form {
-            display: inline;
+        selectable-item {
+            user-select: none;
+            cursor: pointer;
+            &:state(selected) {
+                color: dodgerblue;
+            }
         }
     </style>
-    <ul>
-        @foreach($songs as $song)
-            <li>{{$song->title}} - <form><input type="hidden" name="song" value="{{$song->id}}"><input type="submit" value="Add to playlist"></input></form></li>
-        @endforeach
-    </ul>
+
+    <form action="/">
+        <x-selectable-list keep="input[type=submit]">
+            @foreach($songs as $song)
+                <div><x-selectable-item name="{{$loop->index}}" value="{{$song->id}}">{{$song->title}}</x-selectable-item></div>
+            @endforeach
+        </x-selectable-list>
+        <input type="submit">
+    </form>
 </x-layout>
