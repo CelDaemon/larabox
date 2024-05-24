@@ -14,12 +14,12 @@
         }
     </style>
 
-    <form action="/">
-        <x-selectable-list keep="input[type=submit]">
+    <form action="{{route("song.test")}}" method="POST">
+        <x-selectable-list>
             @foreach($songs as $song)
                 <div><x-selectable-item name="{{$loop->index}}" value="{{$song->id}}">{{$song->title}}</x-selectable-item></div>
             @endforeach
+            <input type="submit">
         </x-selectable-list>
-        <input type="submit">
     </form>
 </x-layout>

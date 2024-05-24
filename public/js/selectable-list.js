@@ -31,7 +31,7 @@ export class SelectableList extends HTMLElement {
      * @private
      */
     _focusoutCallback(event) {
-        if(this.contains(event.relatedTarget) || (event.relatedTarget !== null && event.relatedTarget.matches(this.getAttribute("keep")))) return;
+        if(this.contains(event.relatedTarget)) return;
         for(const item of this._selectedItems) {
             item.selected = false;
         }
@@ -43,7 +43,7 @@ export class SelectableList extends HTMLElement {
      * @private
      */
     _selectCallback(event) {
-        const index = this._selectableItems.indexOf(event.target)
+        const index = this._selectableItems.indexOf(event.target);
         switch (event.detail) {
             case "normal":
                 for(const item of this._selectedItems) {
