@@ -1,21 +1,23 @@
+@use("App\Models\Song")
+@php
+    /** @var numeric $index */
+    /** @var Song $song */
+@endphp
 <app-song-item>
 
     <template shadowrootmode="open">
         @vite("resources/css/components/song-item.css")
         <div>
-            1
+            {{$index + 1}}.
         </div>
         <div>
-            aaaaaaaaaaaaaaaaaaaaaa
+            <span>{{$song->title}}</span>
         </div>
         <div>
-            bbbbbbbbbbbbbb
+            @foreach($song->artists as $artist)<span>@if(!$loop->first), @endif{{$artist->name}}</span>@endforeach
         </div>
         <div>
-            cccc
-        </div>
-        <div>
-            dd
+            {{$song->duration_string}}
         </div>
     </template>
 </app-song-item>

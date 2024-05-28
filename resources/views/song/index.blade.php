@@ -8,7 +8,7 @@
     <form action="/">
         <app-song-list tabindex="0">
             @foreach($songs as $song)
-                <x-song-item data-value="{{$song->id}}"></x-song-item>
+                <x-song-item :index="$loop->index" :song="$song"></x-song-item>
             @endforeach
         </app-song-list>
         <input type="submit">
