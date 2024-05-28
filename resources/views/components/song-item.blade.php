@@ -14,7 +14,7 @@
             <span>{{$song->title}}</span>
         </div>
         <div>
-            @foreach($song->artists as $artist)<span>@if(!$loop->first), @endif{{$artist->name}}</span>@endforeach
+            <span>@foreach($song->artists as $artist)<span>@if(!$loop->first), @endif{{$artist->name}}</span>@endforeach</span>
         </div>
         <div>
             {{$song->duration_string}}
