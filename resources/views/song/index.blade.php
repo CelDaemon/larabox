@@ -4,22 +4,13 @@
     /** @var Collection<Song> $songs */
 @endphp
 <x-layout title="List Songs">
-    <style @nonce>
-        selectable-item {
-            user-select: none;
-            cursor: pointer;
-            &:state(selected) {
-                color: dodgerblue;
-            }
-        }
-    </style>
-
-    <form action="{{route("song.test")}}" method="POST">
-        <x-selectable-list>
+    @vite("resources/css/components/song-list.css")
+    <form action="/">
+        <app-song-list tabindex="0">
             @foreach($songs as $song)
-                <div><x-selectable-item name="{{$loop->index}}" value="{{$song->id}}">{{$song->title}}</x-selectable-item></div>
+                <x-song-item data-value="{{$song->id}}"></x-song-item>
             @endforeach
-            <input type="submit">
-        </x-selectable-list>
+        </app-song-list>
+        <input type="submit">
     </form>
 </x-layout>

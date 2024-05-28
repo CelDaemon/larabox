@@ -5,8 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Foundation\Http\Middleware\Concerns\ExcludesPaths;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Vite;
 
 class CSPMiddleware
 {
@@ -14,7 +13,7 @@ class CSPMiddleware
     protected array $except = ["/up"];
     public function handle(Request $request, Closure $next): mixed
     {
-        $nonce = Str::random();
+        $nonce = Vite::useCspNonce();
         $request->attributes->set("nonce", $nonce);
         $response = $next($request);
         if ($this->inExceptArray($request) || $response->isClientError() || $response->isServerError()) return $response;
