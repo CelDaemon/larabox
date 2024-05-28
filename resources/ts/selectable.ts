@@ -8,10 +8,12 @@ export abstract class Selectable extends HTMLElement {
     }
     set selected(selected: boolean) {
         this.dataset.selected = selected.toString();
-        if(selected && this.dataset.value !== undefined) {
-            const data = new FormData();
-            data.set(this.dataset.value, this.dataset.value);
-            this.internals.setFormValue(data);
+        if(selected) {
+            if(this.dataset.value !== undefined) {
+                const data = new FormData();
+                data.set(this.dataset.value, this.dataset.value);
+                this.internals.setFormValue(data);
+            }
             this.internals.states.add("selected");
         }
         else {
