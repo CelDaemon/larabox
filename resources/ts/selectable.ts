@@ -1,13 +1,14 @@
 export abstract class Selectable extends HTMLElement {
     private static formAssociated = true;
     private readonly internals: ElementInternals;
+    private _selected: boolean = false;
     protected constructor() {
         super();
         this.internals = this.attachInternals();
         this.tabIndex = -1;
     }
     set selected(selected: boolean) {
-        this.dataset.selected = selected.toString();
+        this._selected = selected;
         if(selected) {
             if(this.dataset.value !== undefined) {
                 const data = new FormData();
@@ -22,6 +23,6 @@ export abstract class Selectable extends HTMLElement {
         }
     }
     get selected() {
-        return this.dataset.selected === "true";
+        return this._selected;
     }
 }
