@@ -12,7 +12,7 @@ export abstract class SelectableCollection extends HTMLElement {
     public connectedCallback() {
         this.addEventListener("click", this.clickedCallback);
         this.addEventListener("keydown", this.keydownCallback);
-        this.addEventListener("contextmenu", this.clickedCallback);
+        this.addEventListener("contextmenu", this.contextMenuCallback);
         this.observer.observe(this, {subtree: true, childList: true});
         this.querySelectables();
     }
@@ -21,13 +21,20 @@ export abstract class SelectableCollection extends HTMLElement {
         this.removeEventListener("keydown", this.keydownCallback);
         this.observer.disconnect();
     }
+    private contextMenuCallback(event: MouseEvent) {
+        this.mouseCallback(event, false);
+    }
     private clickedCallback(event: MouseEvent) {
+        this.mouseCallback(event, true);
+    }
+    private mouseCallback(event: MouseEvent, canDeselect: boolean) {
         if(!(event.target instanceof Selectable)) return;
         const index = this.selectables.indexOf(event.target);
         if(event.shiftKey) {
             if(this.previousIndex !== undefined) this.selectBetween(this.previousIndex, index);
         } else if(event.ctrlKey) {
-            this.toggleSelect(event.target);
+            if(canDeselect) this.toggleSelect(event.target);
+            else this.select(event.target);
         } else {
             this.deselectAll();
             this.select(event.target);
