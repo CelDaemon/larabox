@@ -1,0 +1,14 @@
+:host {
+    position: absolute;
+    background: black;
+    border-radius: 5px;
+    border: solid 1px white;
+    overflow: hidden;
+    display: none;
+    > div > div {
+        padding: 8px 16px;
+        &:hover {
+            background-color: color-mix(in hsl, var(--accent-color) 100%, transparent);
+        }
+    }
+}

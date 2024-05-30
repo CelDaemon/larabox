@@ -2,7 +2,7 @@ import {Selectable} from "./selectable";
 export abstract class SelectableCollection extends HTMLElement {
     private previousIndex?: number
     private selectables: Selectable[] = [];
-    private selected = new Set<Selectable>();
+    protected selected = new Set<Selectable>();
     protected query = "app-selectable";
     private observer = new MutationObserver(this.querySelectables);
     private selectionOrigin?: number;

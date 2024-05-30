@@ -13,6 +13,12 @@
 </head>
 <body>
 <template shadowrootmode="open">
+    <app-context-menu>
+        <template shadowrootmode="open">
+            @vite("resources/css/components/context-menu.css")
+            <div></div>
+        </template>
+    </app-context-menu>
     {{$slot}}
 </template>
 </body>

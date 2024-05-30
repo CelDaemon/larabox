@@ -5,7 +5,7 @@
     grid-gap: 16px;
     padding: 0 16px;
     height: 60px;
-    grid-template-columns: [index] minmax(0, 16px) [title] minmax(0, 3fr) [var1] minmax(0, 2fr) [last] minmax(0, 1fr);
+    grid-template-columns: [index] minmax(0, 16px) [title] minmax(0, 3fr) [artists] minmax(0, 2fr) [duration] minmax(0, 1fr);
     > div {
         display: flex;
         align-items: center;
