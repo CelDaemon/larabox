@@ -20,5 +20,5 @@
     background-color: color-mix(in hsl, var(--accent-color) 40%, transparent);
 }
 :host(:state(selected)) {
-    background-color: color-mix(in hsl, var(--accent-color) 70%, transparent);
+    background-color: var(--accent-color);
 }

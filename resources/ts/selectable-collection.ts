@@ -5,6 +5,7 @@ export abstract class SelectableCollection extends HTMLElement {
     private selected = new Set<Selectable>();
     protected query = "app-selectable";
     private observer = new MutationObserver(this.querySelectables);
+    private selectionOrigin?: number;
     protected constructor() {
         super();
     }
@@ -31,6 +32,7 @@ export abstract class SelectableCollection extends HTMLElement {
             this.select(event.target);
         }
         this.previousIndex = index;
+        this.selectionOrigin = undefined;
     }
     private keydownCallback(event: KeyboardEvent) {
         let reverse;
@@ -52,8 +54,20 @@ export abstract class SelectableCollection extends HTMLElement {
             if(reverse && index < 0) return;
             nextIndex = index;
         }
+        if(!event.shiftKey || this.previousIndex === undefined) {
+            this.deselectAll();
+            this.selectionOrigin = undefined;
+        } else {
+            if(this.selectionOrigin === undefined) this.selectionOrigin = this.previousIndex;
+            const previousDistance = this.previousIndex - this.selectionOrigin;
+            const nextDistance = nextIndex - this.selectionOrigin;
+            const invert = nextDistance < 0 || previousDistance < 0 ? previousDistance < nextDistance : previousDistance > nextDistance;
+            if(invert) {
+                this.deselect(this.selectables[this.previousIndex]);
+            }
+        }
+
         this.previousIndex = nextIndex;
-        if(!event.shiftKey) this.deselectAll();
         const nextElement = this.selectables[nextIndex];
         this.select(nextElement);
         nextElement.focus();
