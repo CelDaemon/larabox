@@ -12,6 +12,7 @@ export abstract class SelectableCollection extends HTMLElement {
     public connectedCallback() {
         this.addEventListener("click", this.clickedCallback);
         this.addEventListener("keydown", this.keydownCallback);
+        this.addEventListener("contextmenu", this.clickedCallback);
         this.observer.observe(this, {subtree: true, childList: true});
         this.querySelectables();
     }
