@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "isolatedModules": true,
+        "useDefineForClassFields": true,
+        "target": "ESNext",
+        "types": ["vite/client"],
+        "moduleResolution": "NodeNext",
+        "module": "ESNext",
+        "noEmit": true
+    }
+}
