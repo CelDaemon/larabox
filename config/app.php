@@ -122,5 +122,18 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+    /*
+    |--------------------------------------------------------------------------
+    | High Strict Transport Security
+    |--------------------------------------------------------------------------
+    |
+    | This is the configuration for the High-Strict-Transport-Security header,
+    | it can be configured to include subdomains, and use a custom max age.
+    |
+    */
+    "hsts" => [
+        "max_age" => env("APP_HSTS_MAX_AGE", 31536000),
+        "include_subdomains" => env("APP_HSTS_INCLUDE_SUBDOMAINS", false)
+    ]
 
 ];
