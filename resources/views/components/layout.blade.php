@@ -1,4 +1,5 @@
 @use("Illuminate\View\ComponentSlot")
+@props(["title"])
 @php
 /** @var ?string $title */
 /** @var ComponentSlot $slot */
@@ -7,11 +8,15 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <title>@if($title !== null){{$title}} - @endif{{config("app.name")}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{$title}}</title>
     @vite(["resources/ts/app.ts", "resources/css/components/layout.css"])
 </head>
 <body>
-{{$slot}}
+<lb-router>
+    @fragment("content")
+        {{$slot}}
+    @endfragment
+</lb-router>
 </body>
 </html>
