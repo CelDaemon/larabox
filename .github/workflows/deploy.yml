@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    environment:
+      name: production
+      url: https://larabox.voidgroup.net
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write deploy key to file
+        run: echo "$DEPLOY_KEY" > larabox_deploy && chmod 0600 larabox_deploy
+        env:
+          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+      - name: Write known host
+        run: mkdir -p ~/.ssh && echo "$DEPLOY_HOSTKEY" >> ~/.ssh/known_hosts
+        env:
+          DEPLOY_HOSTKEY: ${{vars.DEPLOY_HOSTKEY}}
+      - name: Deploy to target
+        run: >
+          ssh -i larabox_deploy "${{vars.DEPLOY_TARGET}}" "${{github.sha}}"
+concurrency: production
+name: Deploy to production
+run-name: Deploy to production (${{ github.event.head_commit.message }})

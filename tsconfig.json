@@ -4,9 +4,10 @@
         "useDefineForClassFields": true,
         "target": "ESNext",
         "types": ["vite/client"],
-        "moduleResolution": "NodeNext",
         "module": "ESNext",
         "noEmit": true,
         "allowSyntheticDefaultImports": true
-    }
+    },
+    "include": ["resources/**/*"],
+    "references": [{"path": "tsconfig.node.json"}]
 }

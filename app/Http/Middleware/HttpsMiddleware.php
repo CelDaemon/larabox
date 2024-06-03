@@ -18,10 +18,10 @@ class HttpsMiddleware
     {
         if(!App::isProduction()) return $next($request);
         $response = $next($request);
-        $header = "max-age=".config("app.hsts.max_age");
-        if(config("app.hsts.include_subdomains")) $header .= ";includeSubdomains";
-        if(!$request->secure()) return redirect()->secure($request->path(), 301)->header("Strict-Transport-Security", $header);
-        $response->header("Strict-Transport-Security", $header);
+        $header = 'max-age='.config('app.hsts.max_age');
+        if(config('app.hsts.include_subdomains')) $header .= ';includeSubdomains';
+        if(!$request->secure()) return redirect()->secure($request->path(), 301)->header('Strict-Transport-Security', $header);
+        $response->header('Strict-Transport-Security', $header);
         return $response;
     }
 }
