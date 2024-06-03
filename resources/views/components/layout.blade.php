@@ -1,15 +1,26 @@
+@use("Illuminate\Support\Facades\Vite")
 @use("Illuminate\View\ComponentSlot")
 @php
-/** @var ?string $title */
-/** @var ComponentSlot $slot */
-/** @var array $resources */
+    /** @var ?string $title */
+    /** @var ComponentSlot $slot */
+    /** @var null|string|array $resources */
 @endphp
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
-<head lang="en">
-    <title>@if($title !== null){{$title}} - @endif{{config("app.name")}}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    @vite(["resources/ts/app.ts", "resources/css/components/layout.css"])
+<head lang="{{str_replace('_', '-', app()->getLocale())}}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@isset($title)
+            {{$title}} -
+        @endisset{{config("app.name")}}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
+    <link rel="icon" href="{{Vite::asset("resources/img/responsive-icon.svg")}}">
+    @vite(["resources/ts/app.ts", "resources/css/layout.css"])
 </head>
 <body>
 {{$slot}}

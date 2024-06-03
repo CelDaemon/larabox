@@ -2,6 +2,28 @@
 
 ## Contributing
 
+### Colors
+
+Colors can be exported from [RealtimeColors](https://www.realtimecolors.com), using the following export format:
+```
+--text: ${text.hslH}, ${text.hslS};
+--background: ${bg.hslH}, ${bg.hslS};
+--primary: ${primary.hslH}, ${primary.hslS};
+--secondary: ${secondary.hslH}, ${secondary.hslS};
+--accent: ${accent.hslH}, ${accent.hslS};
+
+--text-light: ${textL.hslL};
+--text-dark: ${textD.hslL};
+--background-light: ${bgL.hslL};
+--background-dark: ${bgD.hslL};
+--primary-light: ${primaryL.hslL};
+--primary-dark: ${primaryD.hslL};
+--secondary-light: ${secondaryL.hslL};
+--secondary-dark: ${secondaryD.hslL};
+--accent-light: ${accentL.hslL};
+--accent-dark: ${accentD.hslL};
+```
+
 ### Debugging
 To enable debugging in the project, use the builtin php web server with the xdebug extension.
 

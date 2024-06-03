@@ -12,11 +12,8 @@ class Layout extends Component
     {
 
     }
-    /**
-     * @inheritDoc
-     */
     public function render(): View
     {
-        return view("components.layout");
+        return view('components.layout');
     }
 }
