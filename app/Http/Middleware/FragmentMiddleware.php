@@ -17,8 +17,9 @@ class FragmentMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
+        $response->setVary("Accept", false);
         if(!$request->expectsJson() || !(($content = $response->getOriginalContent()) instanceof View)) return $response;
         /** @var View $content */
-        return $response->setContent(["title" => $request->attributes->get("title"), "content" => $content->fragment("content")]);
+        return $response->setContent(["title" => $request->attributes->get("title"), "content" => $content->fragment("content")])->setCache(["no_cache" => true])->setPrivate();
     }
 }
