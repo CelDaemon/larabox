@@ -1,4 +1,4 @@
-<x-layout title='Register'>
+<x-layout title="Register">
     <h1>Register</h1>
     <form method="POST" novalidate>
         <div>
