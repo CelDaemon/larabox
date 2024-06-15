@@ -12,4 +12,7 @@ Route::prefix('/debug')->group(function () {
     Route::get('routes', function () {
         dd(Route::getRoutes());
     });
+    Route::get('middleware', function () {
+        dd(Route::getMiddleware());
+    });
 });
