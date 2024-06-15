@@ -31,7 +31,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-        Auth::login($user);
+        Auth::login($user, true);
         event(new Registered($user));
         return redirect()->route('home');
     }
