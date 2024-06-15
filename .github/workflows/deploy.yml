@@ -21,6 +21,8 @@ jobs:
       - name: Deploy to target
         run: >
           ssh -i larabox_deploy "${{vars.DEPLOY_TARGET}}" "${{github.sha}}"
-concurrency: production
+concurrency:
+  cancel-in-progress: true
+  group: production
 name: Deploy to production
 run-name: Deploy to production (${{ github.event.head_commit.message }})
