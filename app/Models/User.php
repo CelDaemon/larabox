@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 /**
+ * @property string $name
+ * @property string $email
+ * @property Hash $password
+ * @property boolean $is_beta
  * @method static User create(array $data)
  */
 class User extends Authenticatable
@@ -46,6 +51,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_beta' => 'boolean',
         ];
     }
 }
