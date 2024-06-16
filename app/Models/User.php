@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
  * @property string $email
  * @property Hash $password
  * @property boolean $is_beta
+ * @property boolean $is_admin
  * @method static User create(array $data)
  */
 class User extends Authenticatable implements MustVerifyEmail
@@ -52,6 +53,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_beta' => 'boolean',
+            'is_admin' => 'boolean'
         ];
     }
 }
