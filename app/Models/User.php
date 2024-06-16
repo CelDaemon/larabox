@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,11 +11,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
 /**
+ * @property string $id
  * @property string $name
  * @property string $email
  * @property Hash $password
  * @property boolean $is_beta
  * @property boolean $is_admin
+ * @property ?DateTime $email_verified_at
  * @method static User create(array $data)
  */
 class User extends Authenticatable implements MustVerifyEmail

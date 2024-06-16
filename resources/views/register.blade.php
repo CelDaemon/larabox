@@ -1,26 +1,26 @@
 <x-layout title="Register">
     <h1>Register</h1>
-    <form method="POST" novalidate>
+    <form method="POST" action="{{route('register')}}" novalidate>
         <div>
             <label for="name">Name:</label>
             <input id="name" name="name" maxlength="255" value="{{old('name')}}">
         </div>
         @error('name')
-            {{$message}}
+            <div>{{$message}}</div>
         @enderror
         <div>
             <label for="email">Email:</label>
             <input id="email" type="email" name="email" maxlength="255" value="{{old('email')}}">
         </div>
         @error('email')
-            {{$message}}
+            <div>{{$message}}</div>
         @enderror
         <div>
             <label for="password">Password:</label>
             <input id="password" type="password" name="password">
         </div>
         @error('password')
-            {{$message}}
+            <div>{{$message}}</div>
         @enderror
         <div>
             <label for="password_confirmation">Password Confirmation:</label>
