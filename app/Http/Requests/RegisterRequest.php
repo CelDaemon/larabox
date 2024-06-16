@@ -12,7 +12,7 @@ use Illuminate\Validation\Rules\Password;
  * @property string $email
  * @property string $password
  */
-class StoreUserRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
 
     /**

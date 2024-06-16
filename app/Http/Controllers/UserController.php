@@ -2,37 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateEmailRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for editing the specified resource.
      */
-    public function create(): View
+    public function show(Request $request): View
     {
-        return view('register');
+        /** @var User $user */
+        $user = $request->user();
+        return view("user", ['user' => $user]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Update the specified resource in storage.
      */
-    public function store(StoreUserRequest $request): RedirectResponse
+    public function update(UpdateUserRequest $request): RedirectResponse
     {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-        Auth::login($user, true);
-        event(new Registered($user));
+        /** @var User $user */
+        $user = $request->user();
+        $user->fill($request->validated());
+        $user->save();
+        return redirect()->route('user.show');
+    }
+
+    public function updateEmail(UpdateEmailRequest $request): RedirectResponse
+    {
+        /** @var User $user */
+        $user = $request->user();
+        $user->fill($request->validated());
+        if($user->isDirty()) {
+            $user->email_verified_at = null;
+            $user->save();
+            $user->sendEmailVerificationNotification();
+        } else $user->save();;
+        return redirect()->route('user.show');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        /** @var User $user */
+        $user = $request->user();
+        $user->delete();
         return redirect()->route('home');
     }
 }

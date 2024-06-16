@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->unverified()->create([
+        User::factory()->create([
             'name' => 'CelDaemon',
             'email' => 'devoid@voidgroup.net',
         ]);
