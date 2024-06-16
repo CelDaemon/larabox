@@ -21,4 +21,5 @@ Route::get('/verify', [EmailVerificationController::class, 'index'])->middleware
 Route::post('/verify', [EmailVerificationController::class, 'send'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 Route::get('/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
 require __DIR__.'/beta.php';
+require __DIR__.'/admin.php';
 require __DIR__.'/debug.php';

@@ -3,6 +3,7 @@
     /** @var User $user */
 @endphp
 <x-layout title="Settings">
+    <h1>Settings</h1>
     <form method="POST" action="{{route('user.update')}}" novalidate>
         @method("PATCH")
         <div>
