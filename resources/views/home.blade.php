@@ -3,8 +3,8 @@
 <x-layout :title="__('home')">
     <h1>{{__('home')}}</h1>
     @guest
-        <a href="{{route('auth.register')}}">{{__('register')}}</a>
-        <a href="{{route('auth.login')}}">{{__('login')}}</a>
+        <a href="{{route('register')}}">{{__('register')}}</a>
+        <a href="{{route('login')}}">{{__('login')}}</a>
     @else
         @php(/** @var User $user */ $user = Auth::user())
         @if(!$user->hasVerifiedEmail())
