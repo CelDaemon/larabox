@@ -9,7 +9,7 @@ Route::view('/', 'home')->name('home');
 
 
 Route::apiResource('users', UserController::class)->only(['store', 'update', 'destroy']);
-Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.login');
+Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.attempt');
 Route::post('/logout', [AuthenticationController::class, 'logout'])->name('auth.logout');
 
 Route::view('/settings', 'settings')->middleware('auth')->name('settings');

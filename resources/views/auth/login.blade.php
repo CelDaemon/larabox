@@ -1,6 +1,6 @@
 <x-layout :title="__('login')">
     <h1>{{__('login')}}</h1>
-    <form method="POST" action="{{route('auth.login')}}" novalidate>
+    <form method="POST" action="{{route('auth.attempt')}}" novalidate>
         <div>
             <label for="email">{{__('email')}}:</label>
             <input id="email" type="text" name="email" maxlength="255">
