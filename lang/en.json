@@ -12,5 +12,8 @@
     "update": "Update",
     "logout": "Logout",
     "delete": "Delete",
-    "settings.delete_warning": "Be warned, your account cannot be recovered!"
+    "settings.delete_warning": "Be warned, your account cannot be recovered!",
+    "verify_email.sent": "Verification email sent!",
+    "verify_email": "Verify Email",
+    "send": "Send"
 }
