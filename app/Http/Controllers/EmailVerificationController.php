@@ -20,7 +20,7 @@ class EmailVerificationController
         $user = $request->user();
         $user->sendEmailVerificationNotification();
 
-        return back()->with('status', __('verify_email.sent'));
+        return back()->with('status', __('Verification email sent!'));
     }
     public function verify(EmailVerificationRequest $request): RedirectResponse
     {

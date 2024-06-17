@@ -1,15 +1,15 @@
 @use('Illuminate\Support\Facades\Auth')
 @use('App\Models\User')
-<x-layout :title="__('home')">
-    <h1>{{__('home')}}</h1>
+<x-layout :title="__('Home')">
+    <h1>{{__('Home')}}</h1>
     @guest
-        <a href="{{route('register')}}">{{__('register')}}</a>
-        <a href="{{route('login')}}">{{__('login')}}</a>
+        <a href="{{route('register')}}">{{__('Register')}}</a>
+        <a href="{{route('login')}}">{{__('Login')}}</a>
     @else
         @php(/** @var User $user */ $user = Auth::user())
         @if(!$user->hasVerifiedEmail())
-            <p><strong>{{__('home.not_verified.0')}} <a href="#">{{__('home.not_verified.1')}}</a></strong></p>
+            <p><strong>{{__('Your email address is not verified, if no verification was received,')}} <a href="#">{{__('try again here.')}}</a></strong></p>
         @endif
-        <a href="{{route('settings')}}">{{__('settings')}}</a>
+        <a href="{{route('settings')}}">{{__('Settings')}}</a>
     @endguest
 </x-layout>

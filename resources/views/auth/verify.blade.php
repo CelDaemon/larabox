@@ -1,7 +1,7 @@
-<x-layout :title="__('verify_email')">
-    <h1>{{__('verify_email')}}</h1>
+<x-layout :title="__('Verify Email')">
+    <h1>{{__('Verify Email')}}</h1>
     <form method="POST" action="{{route('verification.send')}}" novalidate>
-        <input type="submit" value="{{__('send')}}">
+        <input type="submit" value="{{__('Send')}}">
         <div>{{session('status')}}</div>
     </form>
 </x-layout>
