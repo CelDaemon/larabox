@@ -17,6 +17,7 @@
         @if(!$user->hasVerifiedEmail())
             <h4 class="not-verified">Your email is not verified, if the email didn't arrive, <a href="{{route('verification.notice')}}">resend it here.</a></h4>
         @endif
+        <a href="{{route('settings')}}">Settings</a>
         <form action="{{route('logout')}}" method="POST">
             @method("DELETE")
             <input type="submit" value="Logout">
