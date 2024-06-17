@@ -1,0 +1,16 @@
+{
+    "home": "Home",
+    "login": "Login",
+    "register": "Register",
+    "home.not_verified.0": "Your email address is not verified, if no verification was received,",
+    "home.not_verified.1": "try again here",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "password_confirmation": "Password confirmation",
+    "settings": "Settings",
+    "update": "Update",
+    "logout": "Logout",
+    "delete": "Delete",
+    "settings.delete_warning": "Be warned, your account cannot be recovered!"
+}
