@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use DateTime;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Hash;
  * @property ?DateTime $email_verified_at
  * @method static User create(array $data)
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 {
     use HasFactory, Notifiable, HasUlids;
 
