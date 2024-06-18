@@ -10,11 +10,13 @@
         @enderror
         <div>
             <label for="password">{{__('Password')}}:</label>
-            <input id="password" type="password" name="password" maxlength="255">
+            <input id="password" type="password" name="password">
         </div>
         @error('password')
             <div>{{$message}}</div>
         @enderror
         <input type="submit" value="{{__('Login')}}">
     </form>
+    <a href="{{route('register')}}">{{__('Register')}}</a>
+    <a href="{{route('password.request')}}">{{__('Reset password')}}</a>
 </x-layout>

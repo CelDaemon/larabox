@@ -17,14 +17,14 @@
         @enderror
         <div>
             <label for="password">{{__('Password')}}:</label>
-            <input id="password" type="password" name="password" maxlength="255" value="{{old('password')}}">
+            <input id="password" type="password" name="password" value="{{old('password')}}">
         </div>
         @error('password')
             <div>{{$message}}</div>
         @enderror
         <div>
             <label for="password_confirmation">{{__('Password confirmation')}}:</label>
-            <input id="password_confirmation" type="password" name="password_confirmation" maxlength="255" value="{{old('password_confirmation')}}">
+            <input id="password_confirmation" type="password" name="password_confirmation" value="{{old('password_confirmation')}}">
         </div>
         @error('password_confirmation')
             <div>{{$message}}</div>
