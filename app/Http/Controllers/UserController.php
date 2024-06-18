@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserPasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class UserController implements HasMiddleware
 {
     public static function middleware(): array
     {
         return [
-            new Middleware('can:update,user', only: ['update']),
-            new Middleware('can:delete,user', only: ['destroy'])
+            new Middleware('can:update,user', only: ['update', 'updatePassword']),
+            new Middleware('can:delete,user', only: ['destroy']),
         ];
     }
 
@@ -50,7 +54,13 @@ class UserController implements HasMiddleware
         } else {
             $user->save();
         }
-        return back();
+        return back()->with('status', __('Successfully updated profile!'));
+    }
+    public function updatePassword(UpdateUserPasswordRequest $request, User $user): RedirectResponse
+    {
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return back()->with('password.status', __('Successfully updated password!'));
     }
 
     /**
