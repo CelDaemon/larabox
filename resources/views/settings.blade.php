@@ -23,7 +23,7 @@
         <div>{{session('status')}}</div>
     </form>
     <h2>{{__('Update Password')}}</h2>
-    <form method="POST" action="{{route('users.update.password', ['user' => $user])}}">
+    <form method="POST" action="{{route('users.update-password', ['user' => $user])}}">
         <div>
             <label for="current_password">{{__('Current password')}}:</label>
             <input id="current_password" type="password" name="current_password">

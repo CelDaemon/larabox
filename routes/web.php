@@ -11,7 +11,7 @@ Route::view('/', 'home')->name('home');
 
 
 Route::resource('users', UserController::class)->only(['store', 'update', 'destroy']);
-Route::post('/users/{user}', [UserController::class, 'updatePassword'])->name('users.update.password');
+Route::post('/users/{user}', [UserController::class, 'updatePassword'])->name('users.update-password');
 Route::view('/settings', 'settings')->middleware('auth')->name('settings');
 
 Route::get('/verify', [EmailVerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
