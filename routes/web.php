@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\EmailVerificationController;
-use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +11,7 @@ Route::view('/', 'home')->name('home');
 
 
 Route::resource('users', UserController::class)->only(['store', 'update', 'destroy']);
+Route::post('/users/{user}', [UserController::class, 'updatePassword'])->name('users.update.password');
 Route::view('/settings', 'settings')->middleware('auth')->name('settings');
 
 Route::get('/verify', [EmailVerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');

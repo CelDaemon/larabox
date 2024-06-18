@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\PasswordEmailRequest;
-use App\Http\Requests\PasswordResetRequest;
-use App\Http\Requests\PasswordUpdateRequest;
+use App\Http\Requests\Auth\PasswordReset\PasswordEmailRequest;
+use App\Http\Requests\Auth\PasswordReset\PasswordResetRequest;
+use App\Http\Requests\Auth\PasswordReset\PasswordUpdateRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;

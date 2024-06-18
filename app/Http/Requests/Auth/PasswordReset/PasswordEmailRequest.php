@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth\PasswordReset;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * @property string $email
  */
-class PasswordResetRequest extends FormRequest
+class PasswordEmailRequest extends FormRequest
 {
 
     /**
@@ -22,7 +22,6 @@ class PasswordResetRequest extends FormRequest
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255']
         ];
     }
-
     protected function prepareForValidation(): void
     {
         $this->merge([
