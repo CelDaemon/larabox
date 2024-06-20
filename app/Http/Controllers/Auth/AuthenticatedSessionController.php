@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
-class AuthenticationController
+class AuthenticatedSessionController
 {
     /**
      * @throws ValidationException
      */
-    public function login(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request): RedirectResponse
     {
         if(RateLimiter::tooManyAttempts($request->throttleKey(),5)) {
             $seconds = RateLimiter::availableIn($request->throttleKey());
@@ -33,7 +33,7 @@ class AuthenticationController
 
         return redirect()->intended(route('home'));
     }
-    public function logout(Request $request): RedirectResponse
+    public function destroy(Request $request): RedirectResponse
     {
         Auth::logout();
         $request->session()->invalidate();

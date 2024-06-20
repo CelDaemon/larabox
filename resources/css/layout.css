@@ -1,3 +1,10 @@
 :root {
     color-scheme: dark light;
 }
+
+.error-message {
+    color: red;
+}
+.error-input {
+    border: red solid 2px;
+}

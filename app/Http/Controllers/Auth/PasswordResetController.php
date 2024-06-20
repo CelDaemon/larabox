@@ -16,7 +16,7 @@ class PasswordResetController
 {
     public function request(): View
     {
-        return view('auth.request');
+        return view('auth.password.request');
     }
     public function email(PasswordEmailRequest $request): RedirectResponse
     {
@@ -25,7 +25,7 @@ class PasswordResetController
     }
     public function reset(PasswordResetRequest $request, string $token): View
     {
-        return view('auth.reset', ['token' => $token, ...$request->validated()]);
+        return view('auth.password.reset', ['token' => $token, ...$request->validated()]);
     }
     public function update(PasswordUpdateRequest $request, string $token): RedirectResponse
     {

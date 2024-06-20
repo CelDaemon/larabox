@@ -7,17 +7,17 @@
         @method("PATCH")
         <div>
             <label for="name">{{__('Name')}}:</label>
-            <input id="name" type="text" name="name" maxlength="255" value="{{old('name') ?? $user->name}}">
+            <input id="name" type="text" name="name" maxlength="255" value="{{old('name') ?? $user->name}}" class="@error('name') error-input @enderror">
         </div>
         @error('name')
-            <div>{{$message}}</div>
+            <div class="error-message">{{$message}}</div>
         @enderror
         <div>
             <label for="email">{{__('Email')}}:</label>
-            <input id="email" type="text" name="email" maxlength="255" value="{{old('email') ?? $user->email}}">
+            <input id="email" type="text" name="email" maxlength="255" value="{{old('email') ?? $user->email}}" class="@error('email') error-input @enderror">
         </div>
         @error('email')
-        <div>{{$message}}</div>
+        <div class="error-message">{{$message}}</div>
         @enderror
         <input type="submit" value="{{__('Update')}}">
         <div>{{session('status')}}</div>
@@ -26,30 +26,31 @@
     <form method="POST" action="{{route('users.update-password', ['user' => $user])}}">
         <div>
             <label for="current_password">{{__('Current password')}}:</label>
-            <input id="current_password" type="password" name="current_password">
+            <input id="current_password" type="password" name="current_password" class="@error('current_password') error-input @enderror">
         </div>
         @error('current_password')
-            <div>{{$message}}</div>
+            <div class="error-message">{{$message}}</div>
         @enderror
         <div>
-            <label for="password">{{__('Password')}}</label>
-            <input id="password" type="password" name="password">
+            <label for="password">{{__('Password')}}:</label>
+            <input id="password" type="password" name="password" class="@error('password') error-input @enderror">
         </div>
         @error('password')
-            <div>{{$message}}</div>
+            <div class="error-message">{{$message}}</div>
         @enderror
         <div>
-            <label for="password_confirmation">{{__('Password confirmation')}}</label>
-            <input id="password_confirmation" type="password" name="password_confirmation">
+            <label for="password_confirmation">{{__('Password confirmation')}}:</label>
+            <input id="password_confirmation" type="password" name="password_confirmation" class="@error('password_confirmation') error-input @enderror">
         </div>
         @error('password_confirmation')
-        <div>{{$message}}</div>
+        <div class="error-message">{{$message}}</div>
         @enderror
         <input type="submit" value="Update password">
         <div>{{session('password.status')}}</div>
     </form>
     <h2>{{__('Logout')}}</h2>
-    <form method="POST" action="{{route('auth.logout')}}">
+    <form method="POST" action="{{route('session.destroy')}}">
+        @method("DELETE")
         <input type="submit" value="{{__('Logout')}}">
     </form>
     <h2>{{__('Delete Account') }}</h2>

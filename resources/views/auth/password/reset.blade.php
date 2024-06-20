@@ -8,17 +8,17 @@
         <input type="hidden" name="email" value="{{$email}}">
         <div>
             <label for="password">{{__('Password')}}:</label>
-            <input id="password" type="password" name="password">
+            <input id="password" type="password" name="password" class="@error('password') error-input @enderror">
         </div>
         @error('password')
-            <div>{{$message}}</div>
+            <div class="error-message">{{$message}}</div>
         @enderror
         <div>
             <label for="password_confirmation">{{__('Password confirmation')}}:</label>
-            <input id="password_confirmation" type="password" name="password_confirmation">
+            <input id="password_confirmation" type="password" name="password_confirmation" class="@error('password_confirmation') error-input @enderror">
         </div>
         @error('password_confirmation')
-            <div>{{$message}}</div>
+            <div class="error-message">{{$message}}</div>
         @enderror
         <input type="submit" value="{{__('Reset password')}}">
     </form>

@@ -3,7 +3,6 @@
 @php
     /** @var ?string $title */
     /** @var ComponentSlot $slot */
-    /** @var null|string|array $resources */
 @endphp
     <!DOCTYPE html>
 <html>
