@@ -12,7 +12,7 @@ class EmailVerificationController
 {
     public function notice(): View
     {
-        return view('auth.verify');
+        return view('auth.verify-email');
     }
     public function send(Request $request): RedirectResponse
     {

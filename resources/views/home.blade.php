@@ -6,7 +6,7 @@
         <a href="{{route('register')}}">{{__('Register')}}</a>
         <a href="{{route('login')}}">{{__('Login')}}</a>
     @else
-        @php(/** @var User $user */ $user = Auth::user())
+        @php /** @var User $user */ $user = Auth::user() @endphp
         @if(!$user->hasVerifiedEmail())
             <p><strong>{{__('Your email address is not verified, if no verification was received,')}} <a href="#">{{__('try again here.')}}</a></strong></p>
         @endif
