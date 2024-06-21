@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,9 @@ Route::name('password.')->prefix('/reset')->middleware('guest')->group(function 
     Route::post('/{token}', [PasswordResetController::class, 'update'])->name('update');
 });
 Route::singleton('session', AuthenticatedSessionController::class)->creatable()->only(['store', 'destroy']);
+
+Route::resource('playlists', PlaylistController::class);
+
 Route::view('/settings', 'settings')->middleware('auth')->name('settings');
 Route::view('/register', 'auth.register')->name('register');
 Route::view('/login', 'auth.login')->name('login');
