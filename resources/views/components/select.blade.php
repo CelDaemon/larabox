@@ -3,7 +3,7 @@
 @php
     /** @var string $label */
     /** @var string $name */
-    /** @var array<string, string> $options */
+    /** @var array<mixed, string> $options */
     /** @var bool $preserve */
     /** @var ?string $value */
     /** @var ComponentAttributeBag $attributes */
@@ -22,7 +22,7 @@
         @foreach($options as $option => $label)
             <option
                 value="{{$option}}"
-                @selected((($preserve ? old($name) : null)) ?? $value == $option)
+                @selected((($preserve ? old($name) : null)) ?? $value === (string) $option)
             >{{$label}}</option>
         @endforeach
     </select>
