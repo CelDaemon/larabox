@@ -19,7 +19,7 @@
         @error('email')
         <div class="error-message">{{$message}}</div>
         @enderror
-        <input type="submit" value="{{__('Update')}}">
+        <input type="submit" value="{{__('Save')}}">
         <div>{{session('status')}}</div>
     </form>
     <h2>{{__('Update Password')}}</h2>
@@ -45,7 +45,7 @@
         @error('password_confirmation')
         <div class="error-message">{{$message}}</div>
         @enderror
-        <input type="submit" value="Update password">
+        <input type="submit" value="{{__('Change password')}}">
         <div>{{session('password.status')}}</div>
     </form>
     <h2>{{__('Logout')}}</h2>
@@ -59,4 +59,5 @@
         @method("DELETE")
         <input type="submit" value="{{__('Delete')}}">
     </form>
+    <a href="{{route('home')}}">{{__('Back')}}</a>
 </x-layout>

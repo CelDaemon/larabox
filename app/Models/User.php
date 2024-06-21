@@ -7,8 +7,10 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -19,6 +21,7 @@ use Illuminate\Support\Facades\Hash;
  * @property boolean $is_beta
  * @property boolean $is_admin
  * @property ?DateTime $email_verified_at
+ * @property Collection<Playlist> $playlists
  * @method static User create(array $data)
  */
 class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
@@ -59,5 +62,10 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
             'is_beta' => 'boolean',
             'is_admin' => 'boolean'
         ];
+    }
+
+    public function playlists(): HasMany
+    {
+        return $this->hasMany(Playlist::class, 'owned_by');
     }
 }
