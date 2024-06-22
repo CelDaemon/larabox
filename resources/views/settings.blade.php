@@ -24,9 +24,14 @@
         <input type="submit" value="{{__('Logout')}}">
     </form>
     <h2>{{__('Delete Account') }}</h2>
-    <h3>{{__('Be warned, your account cannot be recovered!')}}</h3>
-    <form method="POST" action="{{route('users.destroy', ['user' => $user])}}">
-        @method("DELETE")
-        <input type="submit" value="{{__('Delete')}}">
-    </form>
+    <button is="dialog-button" data-for="delete">{{__('Delete')}}</button>
+    <dialog id="delete">
+        <h2>{{__('Are you sure?') }}</h2>
+        <h4>{{__('Be warned, your account cannot be recovered!')}}</h4>
+        <form method="POST" action="{{route('users.destroy', ['user' => $user])}}">
+            @method("DELETE")
+            <input type="submit" formmethod="dialog" value="{{__('Cancel')}}">
+            <input type="submit" value="{{__('Delete')}}">
+        </form>
+    </dialog>
 </x-layout>
