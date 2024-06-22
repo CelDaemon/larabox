@@ -31,7 +31,7 @@ Route::singleton('session', AuthenticatedSessionController::class)->creatable()-
 
 Route::resource('playlists', PlaylistController::class)->except('index');
 
-Route::get('/library', LibraryController::class)->middleware(['auth', 'can:admin'])->name('library');
+Route::get('/library', LibraryController::class)->middleware('auth')->name('library');
 Route::view('/settings', 'settings')->middleware('auth')->name('settings');
 Route::view('/register', 'auth.register')->name('register');
 Route::view('/login', 'auth.login')->name('login');
