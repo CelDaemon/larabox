@@ -21,6 +21,6 @@
         ])}}
     >
     @error($name)
-        <div class="error-message">{{$message}}</div>
+    <div class="error-message">{{$message}}</div>
     @enderror
 </div>

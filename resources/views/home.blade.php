@@ -10,6 +10,6 @@
         @if(!$user->hasVerifiedEmail())
             <p><strong>{{__('Your email address is not verified, if no verification was received,')}} <a href="#">{{__('try again here.')}}</a></strong></p>
         @endif
-        <a href="{{route('settings')}}">{{__('Settings')}}</a> <a href="{{route('playlists.index')}}">{{__('Playlists')}}</a>
+        <a href="{{route('settings')}}">{{__('Settings')}}</a> <a href="{{route('library')}}">{{__('Library')}}</a>
     @endguest
 </x-layout>
