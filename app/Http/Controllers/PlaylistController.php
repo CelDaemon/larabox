@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Playlist\StorePlaylistRequest;
 use App\Http\Requests\Playlist\UpdatePlaylistRequest;
 use App\Models\Playlist;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\View\View;
@@ -18,7 +16,6 @@ class PlaylistController implements HasMiddleware
     {
         return [
             new Middleware('auth', except: ['show']),
-            new Middleware('can:create,'.Playlist::class, ['create', 'store']),
             new Middleware('can:view,playlist', ['show']),
             new Middleware('can:update,playlist', ['edit', 'update']),
             new Middleware('can:delete,playlist', ['destroy'])
