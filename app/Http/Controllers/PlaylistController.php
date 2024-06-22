@@ -24,16 +24,9 @@ class PlaylistController implements HasMiddleware
             new Middleware('can:delete,playlist', ['destroy'])
         ];
     }
-
     public function create(): View
     {
         return view('playlists.create');
-    }
-    public function index(Request $request): View
-    {
-        /** @var User $user */
-        $user = $request->user();
-        return view('playlists.index', ['playlists' => $user->playlists]);
     }
     public function store(StorePlaylistRequest $request): RedirectResponse
     {

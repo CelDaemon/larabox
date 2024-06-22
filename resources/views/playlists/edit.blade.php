@@ -14,5 +14,4 @@
         @method("DELETE")
         <input type="submit" value="{{__('Delete')}}">
     </form>
-    <a href="{{route('playlists.show', ['playlist' => $playlist])}}">{{__('Back')}}</a>
 </x-layout>

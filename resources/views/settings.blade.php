@@ -29,5 +29,4 @@
         @method("DELETE")
         <input type="submit" value="{{__('Delete')}}">
     </form>
-    <a href="{{route('home')}}">{{__('Back')}}</a>
 </x-layout>
