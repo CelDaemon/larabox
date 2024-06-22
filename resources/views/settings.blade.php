@@ -5,46 +5,16 @@
     <h1>{{__('Settings')}}</h1>
     <form method="POST" action="{{route('users.update', ['user' => $user])}}" novalidate>
         @method("PATCH")
-        <div>
-            <label for="name">{{__('Name')}}:</label>
-            <input id="name" type="text" name="name" maxlength="255" value="{{old('name') ?? $user->name}}" class="@error('name') error-input @enderror">
-        </div>
-        @error('name')
-            <div class="error-message">{{$message}}</div>
-        @enderror
-        <div>
-            <label for="email">{{__('Email')}}:</label>
-            <input id="email" type="text" name="email" maxlength="255" value="{{old('email') ?? $user->email}}" class="@error('email') error-input @enderror">
-        </div>
-        @error('email')
-        <div class="error-message">{{$message}}</div>
-        @enderror
+        <x-input :label="__('Name')" name="name" maxlength="255" :value="$user->name"/>
+        <x-input :label="__('Email')" name="email" type="email" maxlength="255" :value="$user->email"/>
         <input type="submit" value="{{__('Save')}}">
         <div>{{session('status')}}</div>
     </form>
     <h2>{{__('Update Password')}}</h2>
     <form method="POST" action="{{route('users.update-password', ['user' => $user])}}">
-        <div>
-            <label for="current_password">{{__('Current password')}}:</label>
-            <input id="current_password" type="password" name="current_password" class="@error('current_password') error-input @enderror">
-        </div>
-        @error('current_password')
-            <div class="error-message">{{$message}}</div>
-        @enderror
-        <div>
-            <label for="password">{{__('Password')}}:</label>
-            <input id="password" type="password" name="password" class="@error('password') error-input @enderror">
-        </div>
-        @error('password')
-            <div class="error-message">{{$message}}</div>
-        @enderror
-        <div>
-            <label for="password_confirmation">{{__('Password confirmation')}}:</label>
-            <input id="password_confirmation" type="password" name="password_confirmation" class="@error('password_confirmation') error-input @enderror">
-        </div>
-        @error('password_confirmation')
-        <div class="error-message">{{$message}}</div>
-        @enderror
+        <x-input :label="__('Current password')" name="current_password" type="password"/>
+        <x-input :label="__('Password')" name="password" type="password"/>
+        <x-input :label="__('Password confirmation')" name="password_confirmation" type="password"/>
         <input type="submit" value="{{__('Change password')}}">
         <div>{{session('password.status')}}</div>
     </form>
