@@ -49,4 +49,9 @@ class PlaylistController implements HasMiddleware
         $playlist->fill([...$safe->except('is_public'), 'is_public' => $safe->boolean('is_public')])->save();
         return back()->with('status', __('Successfully updated playlist!'));
     }
+    public function destroy(Playlist $playlist): RedirectResponse
+    {
+        $playlist->delete();
+        return redirect()->route('library');
+    }
 }
