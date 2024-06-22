@@ -10,8 +10,14 @@
         <div>{{session('status')}}</div>
     </form>
     <h2>{{__('Delete Playlist')}}</h2>
-    <form method="POST" action="{{route('playlists.destroy', ['playlist' => $playlist])}}">
-        @method("DELETE")
-        <input type="submit" value="{{__('Delete')}}">
-    </form>
+    <button is="dialog-button" data-for="delete">{{__('Delete')}}</button>
+    <dialog id="delete">
+        <h2>{{__('Are you sure?')}}</h2>
+        <h4>{{__('Be warned, this playlist cannot be recovered!')}}</h4>
+        <form method="POST" action="{{route('playlists.destroy', ['playlist' => $playlist])}}">
+            @method("DELETE")
+            <input type="submit" formmethod="dialog" value="{{__('Cancel')}}">
+            <input type="submit" value="{{__('Delete')}}">
+        </form>
+    </dialog>
 </x-layout>
