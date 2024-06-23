@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Foundation\Http\Middleware\Concerns\ExcludesPaths;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Vite;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class ContentSecurityPolicyMiddleware
 {
