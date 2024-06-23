@@ -7,8 +7,13 @@ jobs:
   tests:
     uses: ./.github/workflows/test.yml
     name: Run tests
+    if: ${{ !contains(github.event.head_commit.message, '[skip tests]') }}
   deploy:
     needs: tests
+    if: |
+      always() &&
+      !contains(needs.tests.result, 'failure') &&
+      !contains(needs.tests.result, 'cancelled')
     environment:
       name: production
       url: https://larabox.voidgroup.net
