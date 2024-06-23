@@ -4,7 +4,11 @@ on:
       - main
 
 jobs:
+  tests:
+    uses: ./.github/workflows/test.yml
+    name: Run tests
   deploy:
+    needs: tests
     environment:
       name: production
       url: https://larabox.voidgroup.net
