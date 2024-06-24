@@ -19,7 +19,13 @@ class PlaylistFactory extends Factory
     {
         return [
             'title' => fake()->words(3, true),
-            'is_public' => fake()->boolean()
+            'is_public' => false
         ];
+    }
+    public function public(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_public' => true
+        ]);
     }
 }

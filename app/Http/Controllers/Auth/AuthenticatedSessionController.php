@@ -38,6 +38,5 @@ class AuthenticatedSessionController
         Auth::logout();
         $request->session()->invalidate();
         return redirect()->route('home');
-
     }
 }
