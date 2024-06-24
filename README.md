@@ -2,27 +2,19 @@
 
 ## Contributing
 
-### Colors
+### Testing
 
-Colors can be exported from [RealtimeColors](https://www.realtimecolors.com), using the following export format:
-```
---text: ${text.hslH}, ${text.hslS};
---background: ${bg.hslH}, ${bg.hslS};
---primary: ${primary.hslH}, ${primary.hslS};
---secondary: ${secondary.hslH}, ${secondary.hslS};
---accent: ${accent.hslH}, ${accent.hslS};
+To run the tests in the repository, you can:
+- Run them using artisan: `artisan test`.
+- Configure your editor to run the tests as defined in the `phpunit.xml` configuration file.
 
---text-light: ${textL.hslL};
---text-dark: ${textD.hslL};
---background-light: ${bgL.hslL};
---background-dark: ${bgD.hslL};
---primary-light: ${primaryL.hslL};
---primary-dark: ${primaryD.hslL};
---secondary-light: ${secondaryL.hslL};
---secondary-dark: ${secondaryD.hslL};
---accent-light: ${accentL.hslL};
---accent-dark: ${accentD.hslL};
-```
+#### Coverage
+
+When possible, testing should always strive for 100% coverage.
+If this is not possible, the class should be excluded from the PHPUnit coverage config,
+this way the max possible coverage percentage is always 100%.
+
+To view the total coverage of all classes, either use your editor's builtin functionality (PHPStorm's `Run with Coverage`), or use artisan by running `XDEBUG_MODE=coverage artisan test --coverage`
 
 ### Debugging
 To enable debugging in the project, use the builtin php web server with the xdebug extension.
@@ -39,10 +31,12 @@ A custom environment may be used, but during development the following command h
 During deployment, the following steps need to be taken:
 
 1. Pull the server down for maintenance using `artisan down`, possibly using a secret for testing.
-2. Retrieving the exact application file state, this may be done in a number of ways, but the currently used mechanism is git with the following commands:
+2. Retrieving the exact application file state, this may be done in a number of ways,
+   but the currently used mechanism is git with the following commands:
    - `git fetch origin {COMMIT_SHA} --depth 1`
    - `git reset --hard {COMMIT_SHA}`
-3. Clean out the remaining files from the previous deployment, excluding required configuration files, `storage`, and `database`, currently also done using git with:
+3. Clean out the remaining files from the previous deployment, excluding required configuration files, `storage`,
+   and `database`, currently also done using git with:
    
     `git clean -xf -e storage -e database -e .env`
 4. Install modified composer dependencies, carefully only installing required production files with:

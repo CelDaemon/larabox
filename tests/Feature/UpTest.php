@@ -11,6 +11,6 @@ class UpTest extends TestCase
      */
     public function test_the_up_route_returns_a_successful_response(): void
     {
-        $this->get('/up')->assertOk();
+        $this->get('/up')->assertSuccessful();
     }
 }

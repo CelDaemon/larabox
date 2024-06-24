@@ -9,6 +9,9 @@ jobs:
     name: Run tests
     if: ${{ !contains(github.event.head_commit.message, '[skip tests]') }}
   deploy:
+    concurrency:
+      cancel-in-progress: true
+      group: production
     needs: tests
     if: |
       always() &&
@@ -30,8 +33,5 @@ jobs:
       - name: Deploy to target
         run: >
           ssh -i larabox_deploy "${{vars.DEPLOY_TARGET}}" "${{github.sha}}"
-concurrency:
-  cancel-in-progress: true
-  group: production
 name: Deploy to production
 run-name: Deploy to production (${{ github.event.head_commit.message }})

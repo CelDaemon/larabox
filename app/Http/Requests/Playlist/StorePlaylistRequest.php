@@ -20,4 +20,6 @@ class StorePlaylistRequest extends FormRequest
             'is_public' => ['required', 'boolean']
         ];
     }
+
+    // TODO use reusable validation traits
 }

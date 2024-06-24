@@ -6,5 +6,5 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    //
+    // TODO add additional tests for full coverage
 }
