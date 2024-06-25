@@ -13,7 +13,7 @@ Route::view('/', 'home')->name('home');
 
 
 Route::resource('users', UserController::class)->only(['store', 'update', 'destroy']);
-Route::post('/users/{user}', [UserController::class, 'updatePassword'])->name('users.update-password');
+Route::patch('/users/{user}/password', [UserController::class, 'updatePassword'])->name('users.update-password');
 
 Route::name('verification.')->prefix('/verify')->middleware('auth')->group(function () {
     Route::get('/', [EmailVerificationController::class, 'notice'])->name('notice');

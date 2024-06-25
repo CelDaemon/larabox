@@ -12,6 +12,7 @@
     </form>
     <h2>{{__('Update Password')}}</h2>
     <form method="POST" action="{{route('users.update-password', ['user' => $user])}}">
+        @method("PATCH")
         <x-input :label="__('Current password')" name="current_password" type="password"/>
         <x-input :label="__('Password')" name="password" type="password"/>
         <x-input :label="__('Password confirmation')" name="password_confirmation" type="password"/>
