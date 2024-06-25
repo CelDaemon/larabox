@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Playlist;
+use App\Models\Song;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -19,7 +20,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'CelDaemon',
             'email' => 'devoid@voidgroup.net',
         ]);
-
-        Playlist::factory(5)->for($user, 'owner')->create();
+        Playlist::factory(2)->for($user, 'owner')->hasAttached(Song::factory())->create();
     }
 }

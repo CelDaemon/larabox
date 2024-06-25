@@ -29,7 +29,7 @@ class PlaylistTest extends TestCase
     public function test_library_can_be_rendered()
     {
         $user = User::factory()->create();
-        $playlist = Playlist::factory()->for($user, 'owner')->create();
+        Playlist::factory()->for($user, 'owner')->create();
         $this->actingAs($user)->get(route('library'))->assertSuccessful();
     }
     public function test_playlist_editing_screen_can_be_rendered()
