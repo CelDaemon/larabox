@@ -16,8 +16,8 @@
         <h4>{{__('Be warned, this playlist cannot be recovered!')}}</h4>
         <form method="POST" action="{{route('playlists.destroy', ['playlist' => $playlist])}}">
             @method("DELETE")
-            <input type="submit" formmethod="dialog" value="{{__('Cancel')}}">
             <input type="submit" value="{{__('Delete')}}">
+            <input autofocus type="submit" formmethod="dialog" value="{{__('Cancel')}}">
         </form>
     </dialog>
 </x-layout>

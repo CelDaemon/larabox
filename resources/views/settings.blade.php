@@ -29,10 +29,10 @@
     <dialog id="delete">
         <h2>{{__('Are you sure?') }}</h2>
         <h4>{{__('Be warned, your account cannot be recovered!')}}</h4>
-        <form method="POST" action="{{route('users.destroy', ['user' => $user])}}">
+        <form class="reverse" method="POST" action="{{route('users.destroy', ['user' => $user])}}">
             @method("DELETE")
-            <input type="submit" formmethod="dialog" value="{{__('Cancel')}}">
             <input type="submit" value="{{__('Delete')}}">
+            <input autofocus type="submit" formmethod="dialog" value="{{__('Cancel')}}">
         </form>
     </dialog>
 </x-layout>
