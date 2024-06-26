@@ -2,10 +2,41 @@
     color-scheme: dark light;
     font-family: Roboto, sans-serif;
 }
-
+body {
+    margin: 0;
+}
+main {
+    padding: 1rem;
+}
+nav {
+    height: 4rem;
+    background-color: color-mix(in hsl, AccentColor 30%, Canvas);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-size: larger;
+}
+.nav-section {
+    gap: 1rem;
+    display: flex;
+}
+.nav-icon {
+    background-image: url('/resources/img/responsive-icon.svg');
+    height: 3rem;
+    aspect-ratio: 1 / 1;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: CanvasText;
+}
 .error-message {
     color: red;
 }
 .error-input {
     border: red solid 2px;
+}
+.inline-form {
+    display: inline;
 }
