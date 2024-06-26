@@ -26,8 +26,6 @@ jobs:
         run: cp .env.example .env && ./artisan key:generate --ansi
       - name: Build assets
         run: npm run build
-      - name: Migrate database
-        run: ./artisan migrate --ansi
       - name: Run tests
         run: ./artisan test --ansi
 
