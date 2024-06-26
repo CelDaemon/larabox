@@ -22,6 +22,29 @@
     @vite(['resources/ts/app.ts', 'resources/css/layout.css'])
 </head>
 <body>
-{{$slot}}
+<nav>
+    <div class="nav-section">
+        <a href="{{route('home')}}" class="nav-item">
+            <div class="nav-icon"></div>
+        </a>
+        <a href="{{route('home')}}" class="nav-item">{{__('Home')}}</a>
+        <a href="{{route('discovery')}}" class="nav-item">{{__('Discovery')}}</a>
+        <a href="{{route('queue.show')}}" class="nav-item">{{__('Queue')}}</a>
+        @auth
+            <a href="{{route('library')}}" class="nav-item">{{__('Library')}}</a>
+        @endauth
+    </div>
+    <div class="nav-section">
+        @guest
+            <a href="{{route('login')}}" class="nav-item">{{__('Login')}}</a>
+            <a href="{{route('register')}}" class="nav-item">{{__('Register')}}</a>
+        @else
+            <a href="{{route('settings')}}" class="nav-item">{{__('Settings')}}</a>
+        @endguest
+    </div>
+</nav>
+<main>
+    {{$slot}}
+</main>
 </body>
 </html>

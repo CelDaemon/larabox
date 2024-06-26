@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 
 /**
+ * @property string $id
  * @property string $title
+ * @property int $duration
  * @property Collection<Playlist> $playlists
  */
 class Song extends Model

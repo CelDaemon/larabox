@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
@@ -35,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('nonce', function () {
             return 'nonce="<?php echo request()->attributes->get("nonce") ?>"';
         });
+        Carbon::macro('duration', fn(int $seconds) => idate('i', $seconds).':'.date('s', $seconds));
     }
 }

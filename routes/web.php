@@ -3,13 +3,14 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\DiscoveryController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\QueueController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
-
 
 
 Route::resource('users', UserController::class)->only(['store', 'update', 'destroy']);
@@ -28,12 +29,15 @@ Route::name('password.')->prefix('/reset')->middleware('guest')->group(function 
     Route::post('/{token}', [PasswordResetController::class, 'update'])->name('update');
 });
 Route::singleton('session', AuthenticatedSessionController::class)->creatable()->only(['store', 'destroy']);
-
 Route::resource('playlists', PlaylistController::class)->except('index');
-
+Route::name('queue.')->prefix('/queue')->group(function () {
+    Route::get('/', [QueueController::class, 'show'])->name('show');
+    Route::post('/', [QueueController::class, 'store'])->name('store');
+    Route::delete('/', [QueueController::class, 'destroy'])->name('destroy');
+});
 Route::get('/library', LibraryController::class)->middleware('auth')->name('library');
 Route::view('/settings', 'settings')->middleware('auth')->name('settings');
 Route::view('/register', 'auth.register')->name('register');
 Route::view('/login', 'auth.login')->name('login');
-
-require __DIR__.'/debug.php';
+Route::get('/discovery', DiscoveryController::class)->name('discovery');
+require __DIR__ . '/debug.php';
