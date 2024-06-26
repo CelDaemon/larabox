@@ -2,10 +2,12 @@
     color-scheme: dark light;
     font-family: Roboto, sans-serif;
 }
-
 .error-message {
     color: red;
 }
 .error-input {
     border: red solid 2px;
+}
+.inline-form {
+    display: inline;
 }

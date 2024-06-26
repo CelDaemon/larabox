@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 
 /**
+ * @property string $id
  * @property string $title
  * @property Collection<Playlist> $playlists
  */
