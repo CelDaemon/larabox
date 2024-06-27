@@ -9,21 +9,11 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class UserController implements HasMiddleware
+class UserController
 {
-    public static function middleware(): array
-    {
-        return [
-            new Middleware('can:update,user', only: ['update', 'updatePassword']),
-            new Middleware('can:delete,user', only: ['destroy']),
-        ];
-    }
-
     /**
      * Store a newly created resource in storage.
      */

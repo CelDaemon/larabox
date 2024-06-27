@@ -6,21 +6,10 @@ use App\Http\Requests\Playlist\StorePlaylistRequest;
 use App\Http\Requests\Playlist\UpdatePlaylistRequest;
 use App\Models\Playlist;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\View\View;
 
-class PlaylistController implements HasMiddleware
+class PlaylistController
 {
-    public static function middleware(): array
-    {
-        return [
-            new Middleware('auth', except: ['show']),
-            new Middleware('can:view,playlist', ['show']),
-            new Middleware('can:update,playlist', ['edit', 'update']),
-            new Middleware('can:delete,playlist', ['destroy'])
-        ];
-    }
     public function create(): View
     {
         return view('playlists.create');
