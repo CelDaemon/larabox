@@ -20,7 +20,7 @@ jobs:
     environment:
       name: production
       url: https://larabox.voidgroup.net
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Write deploy key to file
         run: echo "$DEPLOY_KEY" > larabox_deploy && chmod 0600 larabox_deploy
