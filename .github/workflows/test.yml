@@ -21,7 +21,7 @@ jobs:
       - name: Build assets
         run: npm run build
       - name: Seed database
-        run: ./artisan db:seed
+        run: ./artisan migrate --seed
       - name: Run tests
         run: ./artisan test --ansi
 
