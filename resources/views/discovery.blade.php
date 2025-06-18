@@ -13,6 +13,8 @@
                 <li>
                     <input type="checkbox" name="songs[{{$loop->index}}]" value="{{$song->id}}">
                     <span>{{$song->title}}</span>
+                    -
+                    <span>{{Carbon::duration($song->duration)}}</span>
                 </li>
             @endforeach
         </ul>
