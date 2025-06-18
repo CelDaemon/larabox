@@ -1,5 +1,6 @@
 @use('Illuminate\Support\Collection')
 @use('App\Models\Song')
+@use('Carbon\Carbon')
 @php
     /** @var Collection<Song> $songs */
     /** @var array<string, true> $queue */
