@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\ContentSecurityPolicyMiddleware;
 use App\Http\Middleware\HttpsMiddleware;
+use App\Http\Middleware\ContentTypeOptionsMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->removeFromGroup('web', ValidateCsrfToken::class);
         $middleware->appendToGroup('web', ContentSecurityPolicyMiddleware::class);
+        $middleware->append(ContentTypeOptionsMiddleware::class);
         $middleware->append(HttpsMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
