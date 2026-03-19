@@ -12,6 +12,9 @@ jobs:
       NPM_CONFIG_COLOR: always
     steps:
       - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
       - name: Install composer dependencies
         run: composer install -n --prefer-dist --ansi
       - name: Install node dependencies
