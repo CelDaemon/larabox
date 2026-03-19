@@ -8,8 +8,5 @@ export default defineConfig({
             input: [...glob.sync([ "!resources/css/include/**/*.css","resources/**/*.{css,svg}"]), 'resources/ts/app.ts'],
             refresh: true,
         }),
-    ],
-    build: {
-        target: "ESNext"
-    },
+    ]
 });
