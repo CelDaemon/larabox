@@ -17,12 +17,16 @@ jobs:
           php-version: '8.4'
       - name: Install composer dependencies
         run: composer install -n --prefer-dist --ansi
+      - name: Install PNPM
+        uses: pnpm/action-setup@v5
+        with:
+          version: 10
       - name: Install node dependencies
-        run: npm install
+        run: pnpm install
       - name: Setup config
         run: cp .env.example .env && ./artisan key:generate --ansi
       - name: Build assets
-        run: npm run build
+        run: pnpm run build
       - name: Run tests
         run: ./artisan test --ansi
 
